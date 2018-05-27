@@ -7,6 +7,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    public function order() {
+        return $this->hasMany('App\order');
+    }
+
+    public function book() {
+        return $this->hasMany('App\book');
+    }
+
     use Notifiable;
 
     /**

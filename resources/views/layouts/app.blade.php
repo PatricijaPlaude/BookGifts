@@ -32,7 +32,7 @@
                     <ul class="navbar-nav mr-auto">  
                         @if ( !Auth::guest() )
                         <li><a class="nav-link" href="{{ url('/mybooks') }}">My books</a></li>
-                        <li><a class="nav-link" href="{{ url('/mybooks') }}">Orders</a></li>
+                        <li><a class="nav-link" href="{{ url('/myorders') }}">Orders</a></li>
                         @endif
                     </ul>
 
