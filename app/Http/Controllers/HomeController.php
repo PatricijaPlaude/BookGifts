@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Book;
+use App\Genre;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -19,6 +21,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('/home');
+        $books = Book::all();
+        foreach ($books as $key => $value) {
+           $books[$key]->genre = Genre::findOrFail($books[$key]->genre)->name;
+        }
+        return view('home', ['books' => $books]);
     }
 }

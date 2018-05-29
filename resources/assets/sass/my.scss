@@ -1,0 +1,50 @@
+*{
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+table{
+  table-layout: fixed;
+  width: 100%;
+}
+body{
+	background-color: rgb(222, 222, 255);
+}
+h1,h2,h3,h4,h5,h6{
+	font-weight: bold;
+}
+a, a:hover{
+	color: black;
+	text-decoration: none;
+}
+.card{
+	margin: 1%;
+}
+.center
+{
+	text-align: center;
+	padding-left: center;
+}
+#addBook
+{
+	font-weight: bold;
+	background-color: rgb(0,40, 100);
+	color: rgb(222, 222, 255);
+	padding: 1%;
+	float: right;
+}
+.navbar
+{
+	background-color: rgb(44, 55, 99);
+}
+.nav-link
+{
+	color: rgb(222,222,255);
+	font-size: 110%;
+	font-weight: bold;
+}
+.nav-link:hover{
+	color: rgb(122, 122, 255);
+}
+.price{
+	float:right;
+	font-weight: bold;
+}

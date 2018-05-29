@@ -1,6 +1,4 @@
-<title>My orders</title>
-@extends('layouts.app')
-
+@extends('layouts.app', ['title'=>'My orders'])
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

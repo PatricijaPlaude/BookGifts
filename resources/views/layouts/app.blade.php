@@ -8,6 +8,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <title>
+    @if (isset($title)) {{$title}}
+    @else BookGifts
+    @endif</title>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -17,12 +21,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/m.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar navbar-expand-md navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">Home</a>
+                <a class="nav-link" href="{{ url('/') }}">Home</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -32,19 +37,26 @@
                     <ul class="navbar-nav mr-auto">  
                         @if ( !Auth::guest() )
                         <li><a class="nav-link" href="{{ url('/mybooks') }}">My books</a></li>
-                        <li><a class="nav-link" href="{{ url('/myorders') }}">Orders</a></li>
+                        <li><a class="nav-link" href="{{ url('/myorders') }}">My orders</a></li>
+                        @if (Auth::user()->isAdmin())
+                        <li><a class="nav-link" href="{{ url('/genres') }}">Genres</a></li>
+                        @endif
                         @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        <li><a class="nav-link" href="">EN</a></li>
+                        <li><a class="nav-link" href="">LV</a></li>
+                        <li><a class="nav-link" href="">RU</a></li>
+                        <li><div class="nav-link"></div></li>
                         @guest
                             <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                             <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
@@ -72,4 +84,3 @@
     </div>
 </body>
 </html>
-<!--Auth::user()->isAdmin() )-->

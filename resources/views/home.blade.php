@@ -1,24 +1,37 @@
-<title>BookGifts</title>
-@extends('layouts.app')
-
+@extends('layouts.app', ['title'=>'BookGifts'])
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
+        <table class="fit"><?php $i=0; ?>
+        <tr>
+            <td><h3>The list of books</h3> </td>
+            <td><h3><a id="addBook" href="{{url('book/add')}}">Add new book</a></h3></td>
+        </tr>
+                    @foreach ($books as $book)
+                    <?php $i++; ?>
+                @if ($i%2==1)
+                <tr>
+                @endif
+                <td>
+                    <div class="card"><a href="{{ url('book', $book['id']) }}" >
+                        <div class="card-body">
+                        <h5 class="card-title">
+                            {{ $book->name }} ({{$book->year}})
+                        </h5>
+                        <p>{{$book->genre}} by {{ $book->author }}</p>
+                        <p class="no-decor"> 
+                        @if (mb_strlen($book->description) < 100) 
+                        {{$book->description}}
+                        @else 
+                        {{ mb_substr($book->description,0,mb_strpos($book->description,' ',100))}}...
+                        @endif
+                        </p>
+                        </div></a>
+                    </div>
+                </td>
+                @if ($i%2==0)
+                </tr>
+                @endif
+                @endforeach
+        </table>
 </div>
 @endsection
