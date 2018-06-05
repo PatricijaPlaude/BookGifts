@@ -15,18 +15,15 @@
                         {{$book->description}}
                         </p>
                         <p>Seller: {{$book->owner}}</p>
-                    @if (Auth::user())
-                        @if ($book->ordered != 1)
-                            @if (Auth::User()->isAdmin() || $book->ownerid == Auth::User()->id)
-                                <a class="addBtn" href="{{url('book/remove')}}/{{$book->id}}">Remove</a>
-                            @endif
-                            @if ($book->ownerid != Auth::User()->id)
-                                <a class="addBtn" href="{{url('order/add')}}/{{$book->id}}">Order</a>
-                            @endif
-                        @else
-                            <p class="red">This book is ordered</p><br/><br/>
-                        @endif
-                    @endif
+                        <p>Buyer: {{$order->buyer}}</p>
+                        <p>Destination address: {{$order->address}}</p>
+                        <p>Buyer's phone number: {{$order->phone}}</p>
+
+                                @if ($order->buyerid != Auth::User()->id)
+                                    <a class="addBtn" href="{{url('order/update')}}/{{$order->id}}">Delivered</a>
+                                @else
+                                    <a class="addBtn" href="{{url('order/remove')}}/{{$order->id}}">Decline</a>
+                                @endif
         </div>
     </div>
 </div>

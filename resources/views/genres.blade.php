@@ -15,7 +15,7 @@
                             <strong>{{ $errors->first('name') }}</strong>
                         </span>
                     @endif 
-                {!! Form::submit(' Add new ', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit(' Add new ', ['class' => 'addBtn']) !!}
                 {!! Form::close() !!}  
             </li>
             </ol>

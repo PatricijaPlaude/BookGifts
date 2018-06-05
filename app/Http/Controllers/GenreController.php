@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Book;
 use App\Genre;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GenreController extends Controller
 {
@@ -13,9 +15,9 @@ class GenreController extends Controller
      *
      * @return void
      */
-    public function __constructor()
+    public function __construct()
     {
-        $this->middleware("admin");
+        $this->middleware('admin');
     }
     /**
      * Show the application dashboard.

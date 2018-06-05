@@ -33,7 +33,7 @@
                         </span>
                     @endif <br/>
                     {!! Form::label('language', 'Language',['class'=>'form-label'])!!}
-                    {!! Form::select('language', array("ENG"=>"ENG","LAT"=>"LAT","RUS"=>"RUS"), '', ['class' => 'form-control '.($errors->has('language') ? ' is-invalid' : '' )]) !!}
+                    {!! Form::select('language', array("EN"=>"EN","LV"=>"LV","RU"=>"RU"), '', ['class' => 'form-control '.($errors->has('language') ? ' is-invalid' : '' )]) !!}
                     @if ($errors->has('language'))
                         <span class="invalid-feedback">
                             <strong>{{ $errors->first('language') }}</strong>
@@ -46,7 +46,7 @@
                             <strong>{{ $errors->first('price') }}</strong>
                         </span>
                     @endif <br/>
-                    {!! Form::label('Desc', 'Description',['class'=>'form-label'])!!}
+                    {!! Form::label('description', 'Description',['class'=>'form-label'])!!}
                     {!! Form::textArea('description', '', ['class' => 'form-control '.($errors->has('description') ? ' is-invalid' : '' )]) !!}                     
                     @if ($errors->has('description'))
                         <span class="invalid-feedback">
@@ -55,7 +55,7 @@
                     @endif
                     <br/>                  
                     <div class="center">
-                    {!! Form::submit(' Upload ', ['class' => 'btn btn-primary']) !!}</div>   
+                    {!! Form::submit(' Upload ', ['class' => 'addBtn']) !!}</div>   
                     {!! Form::close() !!}                    
         </div>
     </div>

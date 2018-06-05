@@ -4,7 +4,7 @@
         <table class="fit"><?php $i=0; ?>
         <tr>
             <td><h3>The list of books</h3> </td>
-            <td><h3><a id="addBook" href="{{url('book/add')}}">Add new book</a></h3></td>
+            <td><h3><a class="addBtn" href="{{url('book/add')}}">Add new book</a></h3></td>
         </tr>
                     @foreach ($books as $book)
                     <?php $i++; ?>

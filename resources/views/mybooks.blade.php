@@ -4,14 +4,20 @@
         <table><?php $i=0; ?>
         <tr>
             <td><h3>The list of my books</h3> </td>
-            <td><h3><a id="addBook" href="{{url('book/add')}}">Add new book</a></h3></td>
+            <td><h3><a class="addBtn" href="{{url('book/add')}}">Add new book</a></h3></td>
         </tr></table><table>
                     @foreach ($books as $book)
                     <?php $i++; ?>
                 <tr>
                 <td>
-                    <div class="card"><a href="{{ url('book', $book['id']) }}">
+                    <div class="card">
                         <div class="card-body">
+                        @if($book->ordered == 1)
+                        <a href="{{ url('order', $book['orderid']) }}">
+                        <p class="blue">Ordered</p>
+                        @else
+                        <a href="{{ url('book', $book['id']) }}">
+                        @endif
                         <h5 class="card-title">
                             {{ $book->name }} ({{$book->year}})
                         </h5>
@@ -23,8 +29,8 @@
                         {{ mb_substr($book->description,0,100)}}...
                         @endif
                         </p>
-                        </div></a>
-                    </div>
+                        </a>
+                    </div></div>
                 </td>
                 </tr>
                 @endforeach

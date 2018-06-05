@@ -25,8 +25,15 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::where('owner','=',Auth::User()->id)->get();
+        
         foreach ($books as $key => $value) {
            $books[$key]->genre = Genre::findOrFail($books[$key]->genre)->name;
+        $ord = Order::where('book','=',$books[$key]->id)->get();
+        if (isset($ord[0]->status)) 
+            {
+                $books[$key]->ordered = 1;
+                $books[$key]->orderid = $ord[0]->id;
+            }
         }
         return view('mybooks', ['books' => $books]);
     }
@@ -85,6 +92,15 @@ class BookController extends Controller
         $req->genre = Genre::findOrFail($req->genre)->name;
         $req->ownerid=$req->owner;
         $req->owner = User::findOrFail($req->owner)->name;
+        
+        $ord = Order::where('book','=',$id)->get();
+        if (isset($ord[0]->status)) 
+        {
+            $req->ordered = 1;
+            $req->orderid=$ord[0]->id;
+            $req->orderer=$ord[0]->buyer;
+            $req->status=$ord[0]->status;
+        }
         return view("book_show", ['book' => $req]);
     }
 
@@ -120,7 +136,7 @@ class BookController extends Controller
     public function destroy($id)
     {
         $req = Book::findOrFail($id);
-        if ($req->owner != Auth::User()->id) 
+        if ($req->owner != Auth::User()->id && !Auth::User()->isAdmin()) 
             return redirect('book/'.$id);
         $req = Order::where('book','=',$id)->get();
         $i=0;
