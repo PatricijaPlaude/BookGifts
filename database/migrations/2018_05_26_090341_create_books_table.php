@@ -20,7 +20,6 @@ class CreateBooksTable extends Migration
             $table->integer('genre');
             $table->foreign('genre')->references('id')->on('genres');
             $table->integer('year');
-            $table->string('lang',3);
             $table->integer('owner');
             $table->foreign('owner')->references('id')->on('users');
             $table->string('description',1000);

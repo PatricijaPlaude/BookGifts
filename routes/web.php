@@ -13,8 +13,6 @@
 
 Auth::routes();
 Route::get('/', 'HomeController@index');
-Route::get('/home', 'HomeController@index');
-Route::get('/lang/{id}','LangController@update');
 Route::get('/users', 'UserController@index');
 Route::get('/user/update/{id}', 'UserController@update');
 Route::get('/genres', 'GenreController@index');

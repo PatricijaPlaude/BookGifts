@@ -29,7 +29,7 @@ class BookController extends Controller
         foreach ($books as $key => $value) {
            $books[$key]->genre = Genre::findOrFail($books[$key]->genre)->name;
         $ord = Order::where('book','=',$books[$key]->id)->get();
-        if (isset($ord[0]->status)) 
+        if (isset($ord[0]->id)) 
             {
                 $books[$key]->ordered = 1;
                 $books[$key]->orderid = $ord[0]->id;
@@ -63,7 +63,6 @@ class BookController extends Controller
             'year' => 'required|integer|min:0',
             'price' => 'required|numeric|min:0',
             'genre' => 'required|exists:genres,id',
-            'language' => 'required|min:3',
             'description' => 'required|min:20|max:500',      
         );
         $this->validate($request, $rules);   
@@ -73,7 +72,6 @@ class BookController extends Controller
         $book->year = $data['year']; 
         $book->price = $data['price']; 
         $book->genre = $data['genre']; 
-        $book->lang = $data['language']; 
         $book->description = $data['description']; 
         $book->owner = Auth::User()->id; 
         $book->save();

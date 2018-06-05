@@ -69,7 +69,6 @@ class OrderController extends Controller
         $order = new Order();
         $order->address = $data['address']; 
         $order->phone = $data['phone']; 
-        $order->status = 1;
         $order->book = $data['book']; 
         $order->buyer = Auth::User()->id; 
         $order->save();

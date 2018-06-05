@@ -19,7 +19,6 @@ class CreateOrdersTable extends Migration
             $table->integer('book');
             $table->foreign('buyer')->references('id')->on('users');
             $table->foreign('book')->references('id')->on('books');
-            $table->integer('status');
             $table->string('phone',12);
             $table->string('address',100);
             $table->timestamps();

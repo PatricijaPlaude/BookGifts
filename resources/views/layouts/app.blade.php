@@ -18,7 +18,6 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/my.css') }}" rel="stylesheet">
@@ -27,7 +26,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-laravel">
             <div class="container">
-                <a class="nav-link" href="{{ url('/') }}">@lang('book.home')</a>
+                <a class="nav-link" href="{{ url('/') }}">Home</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -48,11 +47,6 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        <?php $arr=array('EN','LV','RU') ?>
-                        @foreach ($arr as $lang)
-                        <li><a class="nav-link" href="{{url('lang')}}/{{$lang}}">{{$lang}}</a></li>
-                        @endforeach
-                        <?php Lang::setlocale(Cookie::get('lang')); ?>
                         <li><div class="nav-link"></div></li>
                         @guest
                             <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>

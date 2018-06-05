@@ -32,13 +32,6 @@
                             <strong>{{ $errors->first('genre') }}</strong>
                         </span>
                     @endif <br/>
-                    {!! Form::label('language', 'Language',['class'=>'form-label'])!!}
-                    {!! Form::select('language', array("EN"=>"EN","LV"=>"LV","RU"=>"RU"), '', ['class' => 'form-control '.($errors->has('language') ? ' is-invalid' : '' )]) !!}
-                    @if ($errors->has('language'))
-                        <span class="invalid-feedback">
-                            <strong>{{ $errors->first('language') }}</strong>
-                        </span>
-                    @endif <br/>
                     {!! Form::label('price', 'Price',['class'=>'form-label'])!!}
                     {!! Form::number('price', '', ['class' => 'form-control '.($errors->has('price') ? ' is-invalid' : '' ), 'step' => '0.1', 'min' => 0, 'max' => 100]) !!}
                     @if ($errors->has('price'))
