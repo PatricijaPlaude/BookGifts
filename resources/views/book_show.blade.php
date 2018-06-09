@@ -10,7 +10,6 @@
                         <p>Written by: {{ $book->author }}</p>
                         <p>Publication year: {{$book->year}}</p>
                         <p>Genre: {{$book->genre}} </p>
-                        <p>Language: {{$book->lang}} </p>
                         <p class="no-decor"> 
                         {{$book->description}}
                         </p>
